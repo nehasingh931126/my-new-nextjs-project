@@ -40,7 +40,7 @@ function NewArtForm(props) {
           <input type='url' required id='url' ref={urlInputRef} />
         </div>
         <div className={classes.control}>
-          <label htmlFor='author'>Art Photographer</label>
+          <label htmlFor='photographer'>Art Photographer</label>
           <input type='text' required id='photographer' ref={photographerInputRef} />
         </div>
         <div className={classes.control}>

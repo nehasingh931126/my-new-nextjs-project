@@ -1,7 +1,11 @@
 import Card from '../ui/Card';
 import classes from './ArtItem.module.css';
-
+import { useRouter } from 'next/router';
 function ArtItem(props) {
+  const router = useRouter();
+  const submitHandler = ()=> {
+    router.push(`/${props.id}`)
+  }
   return (
     <li className={classes.item}>
       <Card>
@@ -10,11 +14,11 @@ function ArtItem(props) {
         </div>
         <div className={classes.description}>
           <h3>Title: {props.title}</h3>
-          <h3>Author {props.photographer}</h3>
+          <h3>Photographer {props.photographer}</h3>
           <address>Likes {props.likes}</address>
         </div>
         <div className={classes.actions}>
-          <button>Show Details</button>
+          <button onClick={submitHandler}>Show Details</button>
         </div>
       </Card>
     </li>
