@@ -275,6 +275,19 @@ function ArtGallery(props) {
 
     return (<ArtList arts={props.arts}></ArtList>)
 }
+
+// export async function getServerSideProps(context) {
+//     // this can be usefull for the authentication
+//     const req = context.req;
+//     const res = context.res;
+//     // fetch data from API
+//     return {
+//         props: {
+//             arts: DUMMY_DATA
+//         }
+//     };
+// }
+
 export async function getStaticProps() {
     // fetch data from the API
     return {

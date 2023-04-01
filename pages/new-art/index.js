@@ -6,4 +6,5 @@ function NewArt () {
     return (<NewArtForm onAddArt={onAddArtHandler}></NewArtForm>)
 }
 
+
 export default NewArt;
