@@ -1,5 +1,7 @@
 import NewArtForm from '../../components/arts/NewArtForm';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
+import { Fragment } from 'react';
 function NewArt () {
     const router = useRouter();
     async function onAddArtHandler(artObject) {
@@ -15,7 +17,15 @@ function NewArt () {
         console.log(data);
         router.push('/')
     }
-    return (<NewArtForm onAddArt={onAddArtHandler}></NewArtForm>)
+    return (
+      <Fragment>
+        <Head>
+          <title>Add new Art to Gallery</title>
+          <meta name="description" content="Upload your creative Art"></meta>
+        </Head>
+        <NewArtForm onAddArt={onAddArtHandler}></NewArtForm>
+      </Fragment>
+    );
 }
 
 

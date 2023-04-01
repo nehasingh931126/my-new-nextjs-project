@@ -1,6 +1,7 @@
 import ArtList from '../components/arts/ArtList';
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import {MongoClient} from 'mongodb';
+import Head from 'next/head';
 
 const DUMMY_DATA = [
     {
@@ -275,7 +276,15 @@ function ArtGallery(props) {
     //     setArtList(DUMMY_DATA);
     // }, []);
 
-    return (<ArtList arts={props.arts}></ArtList>)
+    return (
+      <Fragment>
+        <Head>
+            <title>React Art Gallery</title>
+            <meta name="description" content="Browse a huge list of gallery"></meta>
+        </Head>
+        <ArtList arts={props.arts}></ArtList>
+      </Fragment>
+    );
 }
 
 // export async function getServerSideProps(context) {

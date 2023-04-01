@@ -1,16 +1,23 @@
 import ArtDetail from "../../components/arts/ArtDetail";
 import { MongoClient, ObjectId } from "mongodb";
-
+import { Fragment } from "react";
+import Head from "next/head";
 function PhotographDetails(props) {
   const artsData = props.artsData;
   console.log(artsData, "artData");
   return (
-    <ArtDetail
-      url={artsData.url}
-      photographer={artsData.photographer}
-      description={artsData.description}
-      title={artsData.title}
-    ></ArtDetail>
+    <Fragment>
+      <Head>
+        <title>{artsData.title}</title>
+        <meta namr="description" content={artsData.description}></meta>
+      </Head>
+      <ArtDetail
+        url={artsData.url}
+        photographer={artsData.photographer}
+        description={artsData.description}
+        title={artsData.title}
+      ></ArtDetail>
+    </Fragment>
   );
 }
 
