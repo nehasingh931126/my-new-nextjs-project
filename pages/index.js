@@ -1,5 +1,7 @@
 import ArtList from '../components/arts/ArtList';
 import { useEffect, useState } from 'react';
+import {MongoClient} from 'mongodb';
+
 const DUMMY_DATA = [
     {
         "id": 15955945,
@@ -290,12 +292,24 @@ function ArtGallery(props) {
 
 export async function getStaticProps() {
     // fetch data from the API
+    const client = await MongoClient.connect(
+      "mongodb+srv://iamnehasinghatwork:Z2K4MuoKXCQlHnL6@cluster0.v4nqere.mongodb.net/art-gallery?retryWrites=true&w=majority");
+
+    const db = client.db();
+    const artsCollection = db.collection('arts');
+    const arts = await artsCollection.find().toArray();
+    client.close();
     return {
-        props: {
-            arts: DUMMY_DATA
-        },
-        revalidate: 10
-    }
+      props: {
+        arts: arts.map((art) => ({
+          title: art.title,
+          description: art.description,
+          url: art.url,
+          id: art._id.toString()
+        })),
+      },
+      revalidate: 10,
+    };
 }
 
 export default ArtGallery;

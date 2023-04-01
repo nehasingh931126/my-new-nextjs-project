@@ -14,14 +14,14 @@ function NewArtForm(props) {
     event.preventDefault();
 
     const enteredTitle = titleInputRef.current.value;
-    const enteredImage = urlInputRef.current.value;
-    const enteredAddress = likesInputRef.current.value;
+    const enteredUrl = urlInputRef.current.value;
+    const enteredLikes = likesInputRef.current.value;
     const enteredDescription = descriptionInputRef.current.value;
 
     const artData = {
       title: enteredTitle,
-      image: enteredImage,
-      address: enteredAddress,
+      url: enteredUrl,
+      likes: enteredLikes,
       description: enteredDescription,
     };
 
