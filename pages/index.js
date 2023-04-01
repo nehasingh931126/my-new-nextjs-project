@@ -1,5 +1,5 @@
 import ArtList from '../components/arts/ArtList';
-import Layout from '../components/layout/Layout';
+import { useEffect, useState } from 'react';
 const DUMMY_DATA = [
     {
         "id": 15955945,
@@ -265,11 +265,23 @@ const DUMMY_DATA = [
         "description": "",
         "likes": 1
     }
-]
-function ArtGallery() {
-    return (<ArtList arts={DUMMY_DATA}></ArtList>)
+];
 
-    // return (<ArtList/>)
+function ArtGallery(props) {
+    // const [loadedArt, setArtList] = useState([]);
+    // useEffect(()=> {
+    //     setArtList(DUMMY_DATA);
+    // }, []);
+
+    return (<ArtList arts={props.arts}></ArtList>)
+}
+export async function getStaticProps() {
+    // fetch data from the API
+    return {
+        props: {
+            arts: DUMMY_DATA
+        }
+    }
 }
 
 export default ArtGallery;
