@@ -280,7 +280,8 @@ export async function getStaticProps() {
     return {
         props: {
             arts: DUMMY_DATA
-        }
+        },
+        revalidate: 10
     }
 }
 
